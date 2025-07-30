@@ -1,0 +1,127 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f5f5f5;
+}
+
+.app {
+  text-align: center;
+  padding: 2rem;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-gap: 10px;
+  justify-content: center;
+  margin: 1rem auto;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  font-size: 2.5rem;
+  background-color: white;
+  border: 2px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+
+.cell:hover {
+  background-color: #f0f0f0;
+}
+
+.cell.marked {
+  animation: bounce 0.3s ease;
+}
+
+.winner-cell {
+  animation: glow 1s infinite alternate;
+  background-color: #0ff !important;
+  color: black !important;
+}
+
+.scoreboard, .controls, .difficulty-toggle, .mode-toggle {
+  margin: 1rem;
+}
+
+.scoreboard span {
+  display: inline-block;
+  animation: flip 0.5s ease;
+  font-weight: 600;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  border: 1px solid #007bff;
+  background-color: white;
+}
+
+button:hover {
+  opacity: 0.85;
+  transform: scale(1.05);
+}
+
+.active {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.dark {
+  background-color: #121212;
+  color: white;
+}
+
+.dark .cell {
+  background-color: #333;
+  color: white;
+  border-color: #555;
+}
+
+.dark .cell:hover {
+  background-color: #444;
+}
+
+@media (max-width: 600px) {
+  .board {
+    grid-template-columns: repeat(3, 80px);
+    grid-gap: 8px;
+  }
+
+  .cell {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+  }
+}
+
+/*  ANIMATIONS */
+@keyframes bounce {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+@keyframes glow {
+  0%   { box-shadow: 0 0 10px #0ff; }
+  50%  { box-shadow: 0 0 20px #0ff; }
+  100% { box-shadow: 0 0 10px #0ff; }
+}
+
+@keyframes flip {
+  0%   { transform: rotateX(0); }
+  50%  { transform: rotateX(90deg); }
+  100% { transform: rotateX(0); }
+}
